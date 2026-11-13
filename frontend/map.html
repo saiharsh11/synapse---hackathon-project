@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Synapse Map</title>
+<link rel="stylesheet" href="assets/css/site.css?v=20261030111242">
+<link rel="stylesheet" href="assets/css/app.css?v=20261030122751">
+</head>
+<body class="app">
+<header class="bar">
+  <a class="logo" href="index.html" aria-label="Synapse home">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="13" r="3" fill="var(--ink)"/><circle cx="15" cy="6" r="3" fill="var(--proven)"/><path d="M7.5 11.5 12.5 7.5" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></svg>Synapse</a>
+  <span class="sep">/</span><span id="runTitle"></span>
+  <nav class="views" role="tablist" aria-label="Views">
+    <button role="tab" data-page="map"><span data-icon="frame" data-size="16"></span>Map</button>
+    <button role="tab" data-page="ideas"><span data-icon="bulb" data-size="16"></span>Ideas <span class="n" id="nIdeas"></span></button>
+    <button role="tab" data-page="links"><span data-icon="connect" data-size="16"></span>Links <span class="n" id="nLinks"></span></button>
+    <button role="tab" data-page="papers"><span data-icon="page" data-size="16"></span>Papers <span class="n" id="paperCount"></span></button>
+    <button role="tab" data-page="add"><span data-icon="plus" data-size="16"></span>Add <span class="n" id="nAdd"></span></button>
+  </nav>
+  <button class="btn line" id="replay">↻ Replay discovery</button>
+  <input type="file" id="file" accept="application/pdf,.pdf" multiple hidden>
+</header>
+
+<div class="layout">
+  <aside class="left pages" aria-label="Ideas, links, papers and adding">
+
+    <section class="sec" role="tabpanel" id="s-add" hidden>
+      <h1 class="pageH">Add to your map</h1>
+      <p class="srv" id="srv" hidden></p>
+      <div class="libBox" id="libBox" hidden><p><b>No papers of your own yet?</b> Read the open library: <span id="libN"></span> open-access papers from different fields.</p><button class="btn line" id="startLib">Read the library</button></div>
+      <p class="explain">Bring papers from any field, or start from an idea of your own. Pick one:</p>
+      <div class="addPick" role="radiogroup" aria-label="What do you want to add?">
+        <button role="radio" data-mode="pdf"><span data-icon="read" data-size="24"></span>PDF</button>
+        <button role="radio" data-mode="link"><span data-icon="frame" data-size="24"></span>Link</button>
+        <button role="radio" data-mode="talk" hidden><span data-icon="translate" data-size="24"></span>Talk</button>
+        <button role="radio" data-mode="idea"><span data-icon="sprout" data-size="24"></span>Idea</button>
+      </div>
+
+      <div class="addPane" data-pane="pdf">
+        <h3>Upload PDFs</h3>
+        <label class="dropZone" for="file" id="dropZone">
+          <span data-icon="plus" data-size="36"></span>
+          <b>Drop PDFs here</b><span>or click to choose files</span>
+        </label>
+        <ul class="addFacts"><li>Any field, any number of papers</li><li>Up to 20 MB each</li><li>Safety-checked before any AI reads them</li></ul>
+      </div>
+
+      <form class="addPane" data-pane="link" id="linkForm" novalidate>
+        <h3><label for="linkIn">Paste a link</label></h3>
+        <p>A public paper, preprint or blog post. Synapse fetches the page itself, so it has to be open to everyone.</p>
+        <div class="linkRow"><input id="linkIn" type="url" inputmode="url" maxlength="500" placeholder="https://arxiv.org/abs/…" autocomplete="off"><button class="btn dark" type="submit">Add</button></div>
+        <p class="addErr" id="linkErr" hidden></p>
+        <ul class="addFacts"><li>Works with arXiv, journal pages, PDFs and blogs</li><li>Pages behind a login can't be read</li><li>Safety-checked before any AI reads it</li></ul>
+      </form>
+
+      <div class="addPane" data-pane="talk" hidden>
+        <form id="talkForm" novalidate>
+          <h3><label for="talkIn">Paste a link to a talk</label></h3>
+          <p>A lecture, seminar, conference talk or podcast episode about research. Muse Voice Transcribe writes out what is said, then Synapse reads it like a paper.</p>
+          <div class="linkRow"><input id="talkIn" type="url" inputmode="url" maxlength="500" placeholder="https://… (podcast episode or talk page)" autocomplete="off"><button class="btn dark" type="submit">Add</button></div>
+          <p class="addErr" id="talkErr" hidden></p>
+        </form>
+        <ul class="addFacts"><li>Works with podcast episodes, lecture and conference pages that share the audio or a transcript</li><li>YouTube and other video sites can't be used: their terms don't allow downloading</li><li>Safety-checked before any AI reads the transcript</li></ul>
+        <p class="talkFile">Have the recording itself? <label for="audio" class="plink">Upload it instead</label> (MP3, M4A, WAV or OGG, up to 50 MB).</p>
+        <input type="file" id="audio" accept="audio/*,.mp3,.m4a,.wav,.ogg,.flac" multiple hidden>
+      </div>
+
+      <form class="addPane mine" data-pane="idea" id="ideaQuick">
+        <h3><label for="ideaIn">Write your idea</label></h3>
+        <p>Say what you want to write, in a sentence or two. Synapse shows which of your papers back it up, which push back, and what is missing.</p>
+        <textarea id="ideaIn" rows="4" maxlength="1200" placeholder="For example: I want to test whether a method from one field explains a pattern in another, by learning it from data."></textarea>
+        <button class="btn dark mineGoBtn" type="submit">Continue</button>
+      </form>
+
+      <details class="accepts"><summary>What Synapse accepts</summary>
+        <p>Synapse works with research from any field. Links can come from established journals, major conference proceedings and arXiv; for anything else, upload the PDF. Anything that isn't research is set aside. Its suggestions follow the same standard: every paper it recommends comes from an established journal, a major conference or arXiv.</p>
+      </details>
+
+      <div id="queueBox" hidden>
+        <div class="qHead"><h2 class="lab">Waiting to be read · <span id="qCount"></span></h2><button class="qClear" id="qClear">Remove all</button></div>
+        <p class="explain">Everything you add gets a safety check first. Nothing reaches an AI model until it passes.</p>
+        <ul class="queue" id="queue"></ul>
+        <div class="startBox"><button class="btn dark" id="startRun" disabled>Start reading</button><p id="startNote">Synapse reads only what passed every check.</p></div>
+      </div>
+      <p class="note">What you add stays in this browser, even if you switch screens or close the tab, until you remove it or press Clear. It is sent to Synapse only to be checked and read. When you remove it, Synapse deletes its copy too.</p>
+    </section>
+
+    <section class="sec" role="tabpanel" id="s-ideas" hidden>
+      <h1 class="pageH">Papers you could write</h1>
+      <p class="explain">Ideas for new papers, built from how your papers relate. Before an idea is called new, Synapse searches published work and shows you the closest papers it found. Pick one to see the plan.</p>
+      <ol class="findings" id="ideas"></ol>
+    </section>
+
+    <section class="sec" role="tabpanel" id="s-links" hidden>
+      <h1 class="pageH">How your papers relate</h1>
+      <p class="explain">How two of your papers relate. Each one is checked against quotes from both papers.</p>
+      <ol class="findings" id="findings"></ol>
+    </section>
+
+    <section class="sec" role="tabpanel" id="s-papers" hidden>
+      <h1 class="pageH">Your papers</h1>
+      <p class="explain">Everything on the map. Click a paper to see what it connects to.</p>
+      <ul class="papers" id="papers"></ul>
+    </section>
+
+    <div class="saved"><span>Saved in this browser only.</span><button id="forget">Clear</button></div>
+  </aside>
+
+  <main class="stage" id="stage">
+    <canvas id="sky" class="stagesky" aria-hidden="true"></canvas>
+    <svg id="map" viewBox="0 0 900 740" role="img" aria-label="Map of papers. Each line joins two papers that share a mechanism, and says what it is."></svg>
+    <div class="caption" id="caption" aria-live="polite"></div>
+    <div class="mapTop">
+      <div class="seg" id="filters" role="group" aria-label="Show relationships"></div>
+      <div class="mapTools">
+        <div class="viewSw" id="viewSw" role="group" aria-label="Map view"><button data-v="paper" aria-pressed="true">One paper</button><button data-v="field" aria-pressed="false">Whole map</button></div>
+        <div class="finder" role="search"><label for="findIn" class="sr">Find a paper</label><input id="findIn" type="search" placeholder="Find a paper…" autocomplete="off" role="combobox" aria-controls="findList" aria-expanded="false"><button type="button" class="findBtn" id="findBtn" aria-label="Show all papers" aria-expanded="false"><svg viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M0 0h2v2h2v2h2V2h2V0h2v2H8v2H6v2H4V4H2V2H0z" fill="currentColor"/></svg></button><ul id="findList" hidden></ul></div>
+        <button class="toolBtn" id="compareBtn"><span data-icon="connect" data-size="14"></span>Compare papers</button>
+      </div>
+    </div>
+    <button class="sideOpen" id="sideOpen" hidden><span data-icon="challenge" data-size="16"></span>Agents</button>
+    <div class="zoom" id="zoom" role="group" aria-label="Zoom the map"><button data-z="in" aria-label="Zoom in">+</button><button data-z="out" aria-label="Zoom out">−</button><button data-z="fit">Fit</button></div>
+    <section class="phoneList" id="phoneList" aria-label="The map as a list"></section>
+    <div class="mapNote" id="mapNote"></div>
+    <div class="farBox" id="farBox"></div>
+    <div class="howto"><b>How to read this:</b> the yellow page in the middle is a paper you could write, built from these papers. Grey branches show what each paper gives it. Coloured lines show how two papers relate. Click anything to read the full explanation.</div>
+  </main>
+
+  <aside class="right" id="side" aria-label="Agents and details">
+    <button class="sideHide" id="sideHide" aria-label="Hide this panel">Hide ›</button>
+    <div id="panel" aria-live="polite"></div>
+  </aside>
+  <section class="reader" id="reader" hidden aria-label="Full explanation"></section>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<div class="drop" id="drop" hidden><div><b>Drop PDFs to add them to the map</b><span>Any field. Synapse detects it automatically.</span></div></div>
+
+<script src="assets/js/charts.js?v=20261029114925"></script>
+<script src="assets/js/pixelmap.js?v=20261029114925"></script>
+<script src="assets/js/sky.js?v=20261029114925"></script>
+<script src="assets/js/app.js?v=20261030122751"></script>
+<script src="assets/js/fx.js?v=20261029114925"></script>
+</body>
+</html>

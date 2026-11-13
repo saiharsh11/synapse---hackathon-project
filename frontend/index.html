@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Synapse</title>
+<meta name="description" content="Synapse reads research papers from any field, explains how they relate, checks every link against quotes from both papers, and shows you the new paper they add up to.">
+<link rel="stylesheet" href="assets/css/site.css?v=20261030123535">
+</head>
+<body class="trail sky">
+<canvas id="sky" class="skycv" aria-hidden="true"></canvas>
+
+<header class="hero">
+  <canvas id="garden" aria-label="Pixel-art illustration: a sunny campus lawn with a laptop running Synapse on a picnic blanket, a stack of journals, and pages drifting in the breeze"></canvas>
+  <nav class="nav">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="13" r="3" fill="#fff"/><circle cx="15" cy="6" r="3" fill="#ffd27a"/><path d="M7.5 11.5 12.5 7.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Synapse
+    </a>
+    <div class="navpill"><a href="#how">How it works</a><a href="#example">A finding</a><a href="#trust">Trust</a><a href="#models">Models</a><a href="#privacy">Privacy</a><a href="#next">Next up</a></div>
+    <a class="btn white" href="map.html">Open the map</a>
+  </nav>
+  <div class="copy">
+    <h1>Find the paper your reading adds up to</h1>
+    <p>Give Synapse papers from any field. It explains how they relate, backs every link with quotes from both papers, and turns the connections into ideas for new papers, each checked against published work.</p>
+    <div class="row"><a class="btn white" href="map.html">Open the map</a><a class="btn glass" href="#example">See a finding</a></div>
+  </div>
+</header>
+
+<section class="sponsors" aria-label="Hackathon sponsors">
+  <p class="lab">Hackathon sponsors</p>
+  <div class="marquee"><div class="track"><ul class="logos"><li data-k="meta" tabindex="0" role="img" aria-label="Meta"><span class="mark" style="--src:url(/assets/img/sponsors/meta.png);width:42px;height:28px"></span><span class="word">Meta</span></li><li data-k="baseten" tabindex="0" role="img" aria-label="Baseten"><span class="mark" style="--src:url(/assets/img/sponsors/baseten.png);width:111px;height:24px"></span></li><li data-k="modal" tabindex="0" role="img" aria-label="Modal"><span class="mark" style="--src:url(/assets/img/sponsors/modal.png);width:126px;height:22px"></span></li><li data-k="fireworks" tabindex="0" role="img" aria-label="Fireworks"><span class="mark" style="--src:url(/assets/img/sponsors/fireworks.png);width:148px;height:19px"></span></li><li data-k="meta"><span class="mark" style="--src:url(/assets/img/sponsors/meta.png);width:42px;height:28px"></span><span class="word">Meta</span></li><li data-k="baseten"><span class="mark" style="--src:url(/assets/img/sponsors/baseten.png);width:111px;height:24px"></span></li><li data-k="modal"><span class="mark" style="--src:url(/assets/img/sponsors/modal.png);width:126px;height:22px"></span></li><li data-k="fireworks"><span class="mark" style="--src:url(/assets/img/sponsors/fireworks.png);width:148px;height:19px"></span></li><li data-k="meta"><span class="mark" style="--src:url(/assets/img/sponsors/meta.png);width:42px;height:28px"></span><span class="word">Meta</span></li><li data-k="baseten"><span class="mark" style="--src:url(/assets/img/sponsors/baseten.png);width:111px;height:24px"></span></li><li data-k="modal"><span class="mark" style="--src:url(/assets/img/sponsors/modal.png);width:126px;height:22px"></span></li><li data-k="fireworks"><span class="mark" style="--src:url(/assets/img/sponsors/fireworks.png);width:148px;height:19px"></span></li></ul><ul class="logos" aria-hidden="true"><li data-k="meta"><span class="mark" style="--src:url(/assets/img/sponsors/meta.png);width:42px;height:28px"></span><span class="word">Meta</span></li><li data-k="baseten"><span class="mark" style="--src:url(/assets/img/sponsors/baseten.png);width:111px;height:24px"></span></li><li data-k="modal"><span class="mark" style="--src:url(/assets/img/sponsors/modal.png);width:126px;height:22px"></span></li><li data-k="fireworks"><span class="mark" style="--src:url(/assets/img/sponsors/fireworks.png);width:148px;height:19px"></span></li><li data-k="meta"><span class="mark" style="--src:url(/assets/img/sponsors/meta.png);width:42px;height:28px"></span><span class="word">Meta</span></li><li data-k="baseten"><span class="mark" style="--src:url(/assets/img/sponsors/baseten.png);width:111px;height:24px"></span></li><li data-k="modal"><span class="mark" style="--src:url(/assets/img/sponsors/modal.png);width:126px;height:22px"></span></li><li data-k="fireworks"><span class="mark" style="--src:url(/assets/img/sponsors/fireworks.png);width:148px;height:19px"></span></li><li data-k="meta"><span class="mark" style="--src:url(/assets/img/sponsors/meta.png);width:42px;height:28px"></span><span class="word">Meta</span></li><li data-k="baseten"><span class="mark" style="--src:url(/assets/img/sponsors/baseten.png);width:111px;height:24px"></span></li><li data-k="modal"><span class="mark" style="--src:url(/assets/img/sponsors/modal.png);width:126px;height:22px"></span></li><li data-k="fireworks"><span class="mark" style="--src:url(/assets/img/sponsors/fireworks.png);width:148px;height:19px"></span></li></ul></div></div>
+  <p class="spSay" id="spSay" aria-live="polite">Hover over a logo to see what it does in Synapse.</p>
+  <p class="spNote" id="spNote" hidden>The sponsors provided API access during the hackathon, which has ended. This site no longer reads papers. To use Synapse, run it on your own computer with your own Meta API key.</p>
+</section>
+
+<main class="wrap">
+  <div class="fields">
+    <div class="row" id="fieldRow"></div>
+    <p id="fieldNote">Works with papers from any field.</p>
+  </div>
+
+  <section>
+    <div class="head">
+      <h2>One map of how your papers relate <span>and the paper in the middle of them</span></h2>
+    </div>
+    <div class="window" role="img" aria-label="The Synapse app: a map of papers with labelled links, and a feed of the AI agents at work">
+      <div class="wbar"><span class="dots"><i></i><i></i><i></i></span><span id="runTitle"></span>
+        <span class="tabs"><span class="on">Map</span><span>Findings</span><span>Papers</span></span></div>
+      <div class="wbody">
+        <div class="mapview"><svg id="mini" viewBox="0 0 640 560"></svg>
+          <div class="legend"><span><i style="border-color:var(--proven)"></i>Proven</span><span><i style="border-color:var(--testing);border-top-style:dashed"></i>Being tested</span><span><i style="border-color:var(--rejected);border-top-style:dotted"></i>Not a real link</span></div>
+        </div>
+        <div class="feed">
+          <div class="rows" id="agents"></div>
+          <div class="msg" id="msg"></div>
+          <div class="ask">Drop PDFs here to add papers to the map<i>＋</i></div>
+        </div>
+      </div>
+    </div>
+    <div class="three">
+      <div><b>Relationships, not keywords.</b> A line between two papers says how they relate: the same mechanism, a method one can borrow, a question one answers, or a claim they disagree on. Click it for the full explanation.</div>
+      <div><b>Checked before it's shown.</b> Each link is backed by exact quotes from both papers, then a second AI tries to break it. Links that only share a word are thrown out.</div>
+      <div><b>A paper you could write.</b> The page in the middle is a new paper those links make possible, with what each source gives you, a research question and a first outline. Or start from your own idea.</div>
+    </div>
+  </section>
+
+  <div class="sprig"></div>
+  <section id="rosetta">
+    <div class="head"><span class="ic center" data-icon="connect" data-size="40"></span><h2>Same idea, different words <span>that's why nobody noticed</span></h2>
+      <p>Each field describes the same mechanism in its own vocabulary, so keyword search never connects them. Synapse rewrites both in plain words first, then compares.</p></div>
+    <div class="tabs" id="rTabs" role="tablist" aria-label="Choose a finding"></div>
+    <div class="rosetta" id="rBody" role="tabpanel" aria-live="polite"></div>
+  </section>
+
+  <div class="sprig"></div>
+  <section id="how" class="band">
+    <div class="head"><h2>How it works <span>from your reading to a new paper</span></h2></div>
+    <ol class="steps">
+      <li class="glow"><span class="ic" data-icon="read"></span><h3>Read</h3><p>Reads every page of each paper and picks out its key ideas, each with a quote checked word for word.</p><span class="who">Muse Spark 1.3</span></li>
+      <li class="glow"><span class="ic" data-icon="translate"></span><h3>Translate</h3><p>Rewrites each idea in plain words that any field can understand.</p><span class="who">Muse Spark 1.3</span></li>
+      <li class="glow"><span class="ic" data-icon="connect"></span><h3>Relate</h3><p>Finds how each pair of papers relates, explains it, and backs it with quotes checked word for word.</p><span class="who">Muse Spark 1.3</span></li>
+      <li class="glow"><span class="ic" data-icon="challenge"></span><h3>Challenge</h3><p>A different AI model tries to prove each link wrong. The strongest that survive get a final check.</p><span class="who">Muse Spark Open · Muse Wonder</span></li>
+            <li class="glow"><span class="ic" data-icon="sprout"></span><h3>Plan</h3><p>Turns the links that held up into a paper you could write, then searches published work before calling it new.</p><span class="who">Muse Spark 1.3 · web search</span></li>
+    </ol>
+    <div class="strings panel glow">
+      <div class="sieve-h"><div><div class="lab">Threads between papers</div><h3 id="strSay" aria-live="polite">Threads reach between papers that relate. The ones that hold are tied off.</h3></div>
+        <button class="btn line" id="strReplay">Replay</button></div>
+      <div class="scene" id="scene"><canvas aria-hidden="true"></canvas><div class="tags"></div><div class="tip" hidden></div><ul class="sr" id="sceneList"></ul></div>
+    </div>
+  </section>
+
+  <section id="example">
+    <div class="head"><span class="ic center" data-icon="test" data-size="40"></span><h2 id="exHead"></h2></div>
+    <div class="example">
+      <div class="panel glow">
+        <div class="lab">The finding</div>
+        <h3 id="exTitle"></h3>
+        <div class="side2" id="exSides"></div>
+        <div class="shared" id="exShared"></div>
+        <div id="exQuotes"></div>
+      </div>
+      <div class="panel glow">
+        <div class="lab">The challenge</div>
+        <h3 id="exHyp"></h3>
+        <ul class="exAtt" id="exAtt"></ul>
+        <div class="verdict" id="exVerdict"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sprig"></div>
+  <section id="trust">
+    <div class="head"><span class="ic center" data-icon="challenge" data-size="40"></span><h2>Can you trust it? <span>We checked.</span></h2>
+      <p>Every link has to survive the same checks before you see it, and you can see each one.</p></div>
+    <div class="cols">
+      <div class="panel glow" id="models"><div class="lab">The models, and their one job each</div>
+        <ul class="list cast">
+          <li><span class="p"><i class="mk" style="--src:url(/assets/img/sponsors/meta.png);width:18px;height:12px"></i>Meta Model API</span><span class="m">Muse Spark 1.3</span><small>Reads and explains the papers, finds the links and plans new papers. With web search, it checks published work before an idea is called new.</small></li>
+          <li><span class="p" role="img" aria-label="Baseten"><i class="mk" style="--src:url(/assets/img/sponsors/baseten.png);width:65px;height:14px"></i></span><span class="m">Muse Spark Open</span><small>The skeptic: a different model that tries to break every link before you see it.</small></li>
+          <li><span class="p"><i class="mk" style="--src:url(/assets/img/sponsors/meta.png);width:18px;height:12px"></i>Meta Model API</span><span class="m">Muse Wonder</span><small>The final judge: gives the strongest links a last check. It is also the skeptic for links that involve your own PDFs.</small></li>
+          <li><span class="p"><i class="mk" style="--src:url(/assets/img/sponsors/meta.png);width:18px;height:12px"></i>Meta Model API</span><span class="m">SAM 3.1</span><small>Points at the proof: in a figure behind a quote, it outlines the real things the quote is about, like the cars in a traffic experiment.</small></li>
+        </ul></div>
+    </div>
+    <div class="guards">
+      <h3>How Synapse keeps itself honest</h3>
+      <ol>
+        <li class="glow"><span class="ic" data-icon="lock" data-size="28"></span><b>Research only</b><p>Synapse keeps to scholarly material, in what you add and in everything it suggests back to you.</p></li>
+        <li class="glow"><span class="ic" data-icon="read" data-size="28"></span><b>Every quote is real</b><p>Each quote is searched for word for word in the paper. If it isn't there, the link is thrown out.</p></li>
+        <li class="glow"><span class="ic" data-icon="challenge" data-size="28"></span><b>A second AI argues back</b><p>A different model tries to break every link before you see it.</p></li>
+        <li class="glow"><span class="ic" data-icon="lock" data-size="28"></span><b>Safety check before reading</b><p>Every link and PDF is checked before any AI sees it: public pages only, hidden text removed, and a checker model flags text that tries to give the AI orders.</p></li>
+        <li class="glow"><span class="ic" data-icon="frame" data-size="28"></span><b>Sources are labelled</b><p>Peer-reviewed, preprint or blog, so you know how much weight each one deserves.</p></li>
+        <li class="glow"><span class="ic" data-icon="match" data-size="28"></span><b>New only after a search</b><p>An idea is called new only after a real search of published work, and the closest papers it found are shown with it.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="sprig"></div>
+  <section id="privacy">
+    <div class="head"><span class="ic center" data-icon="lock" data-size="40"></span><h2>Your papers stay yours</h2></div>
+    <div class="three">
+      <div><b>Sent only where needed.</b> Paper text goes only to Meta's models, over encrypted connections. Public papers also go to Muse Spark Open on Baseten for the challenge. Nothing about your computer is sent.</div>
+      <div><b>Yours to remove.</b> A PDF you add is kept under a name made from its contents, never your file name, and deleted when you remove it. Models that train on what they're sent are never used.</div>
+      <div><b>Short quotes, always cited.</b> Synapse shows only brief excerpts, with the title, page and a link to the source.</div>
+    </div>
+  </section>
+
+  <div class="sprig"></div>
+  <section id="next">
+    <div class="head"><span class="ic center" data-icon="bird" data-size="40"></span><h2>More to explore <span>built on the same checked quotes</span></h2>
+      <p>Each one works from the same checked quotes, so nothing is made up.</p></div>
+    <div class="nextgrid">
+      <article class="nx panel glow"><div class="nxh"><span class="ic" data-icon="match" data-size="30"></span><span class="st ready">Ready</span></div>
+        <h3>Has anyone found this already?</h3>
+        <p>When you ask, Synapse searches flagship journals and top conferences for work close to your idea, and tells you plainly what is already published.</p>
+        <div class="pv" id="pvNovel" aria-label="The idea from this run"></div>
+        <span class="uses">Muse Spark 1.3 · web search</span></article>
+      <article class="nx panel glow"><div class="nxh"><span class="ic" data-icon="sprout" data-size="30"></span><span class="st ready">Ready</span></div>
+        <h3>Start from your own idea</h3>
+        <p>Write the paper you have in mind in a sentence. Synapse shows which of your papers back it up, which push back, and what is missing.</p>
+        <div class="pv"><a class="btn line" href="map.html">Try it in the app</a></div>
+        <span class="uses">Muse Spark 1.3</span></article>
+      <article class="nx panel glow"><div class="nxh"><span class="ic" data-icon="match" data-size="30"></span><span class="st ready">Ready</span></div>
+        <h3>What to read next</h3>
+        <p>Along with that search, it picks the papers from flagship journals and top conferences most worth reading for your idea.</p>
+        <span class="uses">Muse Spark 1.3 · web search</span></article>
+    </div>
+  </section>
+</main>
+
+<div class="dusk">
+  <canvas id="flies" aria-label="Pixel-art garden at dusk with fireflies that start blinking at random and gradually fall into step"></canvas>
+  <div class="dusk-copy">
+    <h2>See what your papers add up to</h2>
+    <p>Add papers from any field and see how they connect.</p>
+    <a class="btn white" href="map.html">Open the map</a>
+  </div>
+  <div class="sync">
+    <div class="meter"><span id="syncBar"></span></div>
+    <div><b id="syncPct">0%</b> in step</div>
+    <p>These 48 fireflies each have their own rhythm and nudge their timing toward the group's. A classic model of synchronization, running live.</p>
+    <button class="btn glass" id="scatter">Scatter them</button>
+  </div>
+</div>
+
+<footer class="end">
+  <div class="endgrid">
+    <div class="brandline"><b>Synapse</b><span>Find the paper your reading adds up to.</span></div>
+    <div><h4>Product</h4><a href="map.html">The map</a><a href="#how">How it works</a><a href="#example">A finding</a><a href="#next">Next up</a></div>
+    <div><h4>Trust</h4><a href="#trust">Checks</a><a href="#models">Models</a><a href="#privacy">Privacy</a></div>
+    <div><h4>Built with</h4><span>Meta Model API</span><span>Baseten · Modal · Fireworks</span></div>
+  </div>
+  <div class="fine"><span>Built during the Meta Global AI Developer Hackathon, Oct 27 to Nov 4, 2026 · Team Constellation</span></div>
+</footer>
+
+<script src="assets/js/sky.js?v=20261029114925"></script>
+<script src="assets/js/garden.js?v=20261029114925"></script>
+<script src="assets/js/fireflies.js?v=20261029114925"></script>
+<script src="assets/js/charts.js?v=20261029114925"></script>
+<script src="assets/js/pixelmap.js?v=20261029114925"></script>
+<script src="assets/js/threads.js?v=20261030123335"></script>
+<script src="assets/js/site.js?v=20261030123535"></script>
+<script src="assets/js/fx.js?v=20261029114925"></script>
+</body>
+</html>

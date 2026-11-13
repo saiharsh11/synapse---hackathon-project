@@ -1,0 +1,25 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Local data, caches, outputs
+/data/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Local design mockups
+mockups/
