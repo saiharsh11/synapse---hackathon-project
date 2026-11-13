@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 210" width="1200" height="210" shape-rendering="crispEdges" role="img" aria-label="Six steps: Read, Translate, Connect, Challenge, Judge, Plan. A pulse moves through them in order.">
+  <rect width="1200" height="210" fill="#f3f4f1"/>
+  <text x="30" y="34" fill="#5b625d" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" letter-spacing="1.6">EACH AGENT CHECKS THE WORK OF THE ONE BEFORE IT</text>
+
+  <!-- the track and the pulse that runs along it -->
+  <rect x="110" y="118" width="975" height="4" fill="#d6d9d2"/>
+  <rect x="110" y="118" width="0" height="4" fill="#e8892b">
+    <animate attributeName="width" values="0;975;975" keyTimes="0;.85;1" dur="7s" repeatCount="indefinite"/>
+  </rect>
+
+  <g font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" text-anchor="middle">
+    <!-- one box per agent; the border lights up as the pulse reaches it -->
+    <g transform="translate(30 70)">
+      <rect x="4" y="4" width="160" height="100" fill="#1b1f1c" opacity=".12"/>
+      <rect width="160" height="100" fill="#fff" stroke="#1b1f1c" stroke-width="3"><animate attributeName="stroke" values="#e8892b;#1b1f1c;#1b1f1c" keyTimes="0;.12;1" dur="7s" repeatCount="indefinite"/></rect>
+      <text x="80" y="30" fill="#9aa19c" font-family="ui-monospace,Menlo,monospace" font-size="11">01</text>
+      <text x="80" y="56" fill="#1b1f1c" font-size="19" font-weight="700">Read</text>
+      <text x="80" y="80" fill="#5b625d" font-family="ui-monospace,Menlo,monospace" font-size="10.5">Muse Spark 1.3</text>
+    </g>
+    <g transform="translate(225 70)">
+      <rect x="4" y="4" width="160" height="100" fill="#1b1f1c" opacity=".12"/>
+      <rect width="160" height="100" fill="#fff" stroke="#1b1f1c" stroke-width="3"><animate attributeName="stroke" values="#1b1f1c;#1b1f1c;#e8892b;#1b1f1c;#1b1f1c" keyTimes="0;.16;.17;.29;1" dur="7s" repeatCount="indefinite"/></rect>
+      <text x="80" y="30" fill="#9aa19c" font-family="ui-monospace,Menlo,monospace" font-size="11">02</text>
+      <text x="80" y="56" fill="#1b1f1c" font-size="19" font-weight="700">Translate</text>
+      <text x="80" y="80" fill="#5b625d" font-family="ui-monospace,Menlo,monospace" font-size="10.5">Muse Spark 1.3</text>
+    </g>
+    <g transform="translate(420 70)">
+      <rect x="4" y="4" width="160" height="100" fill="#1b1f1c" opacity=".12"/>
+      <rect width="160" height="100" fill="#fff" stroke="#1b1f1c" stroke-width="3"><animate attributeName="stroke" values="#1b1f1c;#1b1f1c;#e8892b;#1b1f1c;#1b1f1c" keyTimes="0;.33;.34;.46;1" dur="7s" repeatCount="indefinite"/></rect>
+      <text x="80" y="30" fill="#9aa19c" font-family="ui-monospace,Menlo,monospace" font-size="11">03</text>
+      <text x="80" y="56" fill="#1b1f1c" font-size="19" font-weight="700">Connect</text>
+      <text x="80" y="80" fill="#5b625d" font-family="ui-monospace,Menlo,monospace" font-size="10.5">Muse Spark 1.3</text>
+    </g>
+    <g transform="translate(615 70)">
+      <rect x="4" y="4" width="160" height="100" fill="#1b1f1c" opacity=".12"/>
+      <rect width="160" height="100" fill="#fff" stroke="#1b1f1c" stroke-width="3"><animate attributeName="stroke" values="#1b1f1c;#1b1f1c;#e8892b;#1b1f1c;#1b1f1c" keyTimes="0;.50;.51;.63;1" dur="7s" repeatCount="indefinite"/></rect>
+      <text x="80" y="30" fill="#9aa19c" font-family="ui-monospace,Menlo,monospace" font-size="11">04</text>
+      <text x="80" y="56" fill="#1b1f1c" font-size="19" font-weight="700">Challenge</text>
+      <text x="80" y="80" fill="#5b625d" font-family="ui-monospace,Menlo,monospace" font-size="10.5">Muse Spark Open</text>
+    </g>
+    <g transform="translate(810 70)">
+      <rect x="4" y="4" width="160" height="100" fill="#1b1f1c" opacity=".12"/>
+      <rect width="160" height="100" fill="#fff" stroke="#1b1f1c" stroke-width="3"><animate attributeName="stroke" values="#1b1f1c;#1b1f1c;#e8892b;#1b1f1c;#1b1f1c" keyTimes="0;.67;.68;.80;1" dur="7s" repeatCount="indefinite"/></rect>
+      <text x="80" y="30" fill="#9aa19c" font-family="ui-monospace,Menlo,monospace" font-size="11">05</text>
+      <text x="80" y="56" fill="#1b1f1c" font-size="19" font-weight="700">Judge</text>
+      <text x="80" y="80" fill="#5b625d" font-family="ui-monospace,Menlo,monospace" font-size="10.5">Muse Wonder 1.0</text>
+    </g>
+    <g transform="translate(1005 70)">
+      <rect x="4" y="4" width="160" height="100" fill="#1b1f1c" opacity=".12"/>
+      <rect width="160" height="100" fill="#fff" stroke="#1b1f1c" stroke-width="3"><animate attributeName="stroke" values="#1b1f1c;#1b1f1c;#e8892b;#e8892b" keyTimes="0;.84;.85;1" dur="7s" repeatCount="indefinite"/></rect>
+      <text x="80" y="30" fill="#9aa19c" font-family="ui-monospace,Menlo,monospace" font-size="11">06</text>
+      <text x="80" y="56" fill="#1b1f1c" font-size="19" font-weight="700">Plan</text>
+      <text x="80" y="80" fill="#5b625d" font-family="ui-monospace,Menlo,monospace" font-size="10.5">Muse Spark 1.3</text>
+    </g>
+  </g>
+</svg>

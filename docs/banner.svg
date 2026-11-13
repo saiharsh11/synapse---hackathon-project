@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 440" width="1200" height="440" shape-rendering="crispEdges" role="img" aria-label="Synapse: threads reach between research papers, a spark tests each one, the ones that hold are tied off and one is thrown out">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a78d6"/>
+      <stop offset=".75" stop-color="#8fbcef"/>
+      <stop offset="1" stop-color="#b9d8f6"/>
+    </linearGradient>
+    <pattern id="grass" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#5f9f3e"/>
+      <rect width="8" height="8" fill="#6db04a"/>
+      <rect x="8" y="8" width="8" height="8" fill="#6db04a"/>
+    </pattern>
+    <g id="cloud">
+      <rect x="16" y="0" width="40" height="8" fill="#fff"/>
+      <rect x="8" y="8" width="64" height="8" fill="#fff"/>
+      <rect x="0" y="16" width="88" height="8" fill="#fff"/>
+      <rect x="8" y="24" width="72" height="8" fill="#e6f0fb"/>
+    </g>
+    <path id="t1" pathLength="1" d="M165 218 Q260 330 405 328"/>
+    <path id="t2" pathLength="1" d="M405 328 Q600 380 795 298"/>
+    <path id="t3" pathLength="1" d="M795 298 Q930 190 1035 198"/>
+    <path id="t4" pathLength="1" d="M165 218 Q600 160 1035 198"/>
+  </defs>
+
+  <rect width="1200" height="440" fill="url(#sky)"/>
+
+  <!-- drifting clouds -->
+  <g opacity=".85">
+    <use href="#cloud" xlink:href="#cloud" y="4"><animateTransform attributeName="transform" type="translate" from="-140 0" to="1260 0" dur="70s" repeatCount="indefinite"/></use>
+    <use href="#cloud" xlink:href="#cloud" y="168"><animateTransform attributeName="transform" type="translate" from="300 0" to="1700 0" dur="95s" repeatCount="indefinite"/></use>
+    <use href="#cloud" xlink:href="#cloud" y="232"><animateTransform attributeName="transform" type="translate" from="760 0" to="2160 0" dur="80s" repeatCount="indefinite"/></use>
+  </g>
+
+  <!-- title -->
+  <text x="600" y="72" text-anchor="middle" fill="#fff" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="46" font-weight="700" letter-spacing="-1" stroke="#2c62b8" stroke-width="4" paint-order="stroke">Synapse</text>
+  <text x="600" y="104" text-anchor="middle" fill="#f4f8ff" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17" stroke="#2f66bd" stroke-width="3" paint-order="stroke">Links between research papers from different fields, backed by quotes from both</text>
+
+  <!-- captions, one per act -->
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" letter-spacing="1.5" fill="#fff" text-anchor="middle" stroke="#3a74cc" stroke-width="3" paint-order="stroke">
+    <text x="600" y="138" opacity="0">THREADS REACH BETWEEN PAPERS THAT RELATE
+      <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;.05;.33;.36;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="600" y="138" opacity="0">A SECOND MODEL TRIES TO BREAK EACH ONE
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;.36;.39;.68;.71;1" dur="10s" repeatCount="indefinite"/></text>
+    <text x="600" y="138" opacity="0">THE ONES THAT HOLD ARE TIED OFF
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;.71;.74;.92;.97;1" dur="10s" repeatCount="indefinite"/></text>
+  </g>
+
+  <!-- threads -->
+  <g fill="none" stroke-width="4" stroke-linecap="square">
+    <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.92;.98;1" dur="10s" repeatCount="indefinite"/>
+    <use href="#t1" xlink:href="#t1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#e8d7ae">
+      <animate attributeName="stroke-dashoffset" values="1;1;0;0" keyTimes="0;.06;.16;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#e8d7ae;#e8d7ae;#e8892b;#e8892b" keyTimes="0;.46;.47;1" dur="10s" repeatCount="indefinite"/>
+    </use>
+    <use href="#t2" xlink:href="#t2" stroke-dasharray="1" stroke-dashoffset="1" stroke="#e8d7ae">
+      <animate attributeName="stroke-dashoffset" values="1;1;0;0" keyTimes="0;.12;.22;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#e8d7ae;#e8d7ae;#e8892b;#e8892b" keyTimes="0;.54;.55;1" dur="10s" repeatCount="indefinite"/>
+    </use>
+    <use href="#t3" xlink:href="#t3" stroke-dasharray="1" stroke-dashoffset="1" stroke="#e8d7ae">
+      <animate attributeName="stroke-dashoffset" values="1;1;0;0" keyTimes="0;.18;.28;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#e8d7ae;#e8d7ae;#e8892b;#e8892b" keyTimes="0;.62;.63;1" dur="10s" repeatCount="indefinite"/>
+    </use>
+    <use href="#t4" xlink:href="#t4" stroke-dasharray="1" stroke-dashoffset="1" stroke="#e8d7ae">
+      <animate attributeName="stroke-dashoffset" values="1;1;0;0" keyTimes="0;.24;.34;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#e8d7ae;#e8d7ae;#8d958f;#8d958f" keyTimes="0;.70;.71;1" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;1;.3;.3" keyTimes="0;.70;.74;1" dur="10s" repeatCount="indefinite"/>
+    </use>
+  </g>
+
+  <!-- the challenger's spark runs along each thread in turn -->
+  <g>
+    <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.92;.98;1" dur="10s" repeatCount="indefinite"/>
+    <rect x="-5" y="-5" width="10" height="10" fill="#fff6c9" stroke="#ffd34d" stroke-width="2" opacity="0">
+      <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;.38;.46;1" calcMode="linear"><mpath href="#t1" xlink:href="#t1"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;.379;.38;.46;.461;1" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="-5" y="-5" width="10" height="10" fill="#fff6c9" stroke="#ffd34d" stroke-width="2" opacity="0">
+      <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;.46;.54;1" calcMode="linear"><mpath href="#t2" xlink:href="#t2"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;.459;.46;.54;.541;1" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="-5" y="-5" width="10" height="10" fill="#fff6c9" stroke="#ffd34d" stroke-width="2" opacity="0">
+      <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;.54;.62;1" calcMode="linear"><mpath href="#t3" xlink:href="#t3"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;.539;.54;.62;.621;1" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="-5" y="-5" width="10" height="10" fill="#fff6c9" stroke="#ffd34d" stroke-width="2" opacity="0">
+      <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;.62;.70;1" calcMode="linear"><mpath href="#t4" xlink:href="#t4"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;.619;.62;.70;.701;1" dur="10s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- knots on the threads that held; a label on the one thrown out -->
+  <g>
+    <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.92;.98;1" dur="10s" repeatCount="indefinite"/>
+    <g transform="translate(272 301)" opacity="0"><rect x="-8" y="-8" width="16" height="16" fill="#e8892b" stroke="#7a3f0c" stroke-width="2"/><rect x="-3" y="-3" width="6" height="6" fill="#ffd9a8"/>
+      <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.46;.48;1" dur="10s" repeatCount="indefinite"/></g>
+    <g transform="translate(600 346)" opacity="0"><rect x="-8" y="-8" width="16" height="16" fill="#e8892b" stroke="#7a3f0c" stroke-width="2"/><rect x="-3" y="-3" width="6" height="6" fill="#ffd9a8"/>
+      <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.54;.56;1" dur="10s" repeatCount="indefinite"/></g>
+    <g transform="translate(922 219)" opacity="0"><rect x="-8" y="-8" width="16" height="16" fill="#e8892b" stroke="#7a3f0c" stroke-width="2"/><rect x="-3" y="-3" width="6" height="6" fill="#ffd9a8"/>
+      <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.62;.64;1" dur="10s" repeatCount="indefinite"/></g>
+    <g transform="translate(600 172)" opacity="0">
+      <rect x="-56" y="-12" width="112" height="22" fill="#f4f5f2" stroke="#8d958f" stroke-width="2"/>
+      <text y="4" text-anchor="middle" fill="#5b625d" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" letter-spacing="1.2">THROWN OUT</text>
+      <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;.71;.73;1" dur="10s" repeatCount="indefinite"/></g>
+  </g>
+
+  <!-- paper sheets: fields only, no real papers -->
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.2">
+    <g transform="translate(90 170)">
+      <animateTransform attributeName="transform" type="translate" values="90 170;90 165;90 170" dur="4s" repeatCount="indefinite"/>
+      <rect x="5" y="5" width="150" height="96" fill="#1d3b6e" opacity=".25"/>
+      <rect width="150" height="96" fill="#fff" stroke="#1b1f1c" stroke-width="3"/>
+      <rect x="12" y="13" width="8" height="8" fill="#3f9a64"/><text x="26" y="21" fill="#3f9a64">ECOLOGY</text>
+      <rect x="12" y="36" width="110" height="5" fill="#cfd3cd"/><rect x="12" y="50" width="126" height="5" fill="#cfd3cd"/><rect x="12" y="64" width="96" height="5" fill="#cfd3cd"/><rect x="12" y="78" width="118" height="5" fill="#cfd3cd"/>
+    </g>
+    <g transform="translate(330 280)">
+      <animateTransform attributeName="transform" type="translate" values="330 280;330 275;330 280" dur="4.6s" begin="-1s" repeatCount="indefinite"/>
+      <rect x="5" y="5" width="150" height="96" fill="#1d3b6e" opacity=".25"/>
+      <rect width="150" height="96" fill="#fff" stroke="#1b1f1c" stroke-width="3"/>
+      <rect x="12" y="13" width="8" height="8" fill="#6d62d6"/><text x="26" y="21" fill="#6d62d6">PHYSICS</text>
+      <rect x="12" y="36" width="122" height="5" fill="#cfd3cd"/><rect x="12" y="50" width="100" height="5" fill="#cfd3cd"/><rect x="12" y="64" width="126" height="5" fill="#cfd3cd"/><rect x="12" y="78" width="84" height="5" fill="#cfd3cd"/>
+    </g>
+    <g transform="translate(720 250)">
+      <animateTransform attributeName="transform" type="translate" values="720 250;720 245;720 250" dur="4.3s" begin="-2s" repeatCount="indefinite"/>
+      <rect x="5" y="5" width="150" height="96" fill="#1d3b6e" opacity=".25"/>
+      <rect width="150" height="96" fill="#fff" stroke="#1b1f1c" stroke-width="3"/>
+      <rect x="12" y="13" width="8" height="8" fill="#d65a7f"/><text x="26" y="21" fill="#d65a7f">ECONOMICS</text>
+      <rect x="12" y="36" width="104" height="5" fill="#cfd3cd"/><rect x="12" y="50" width="126" height="5" fill="#cfd3cd"/><rect x="12" y="64" width="112" height="5" fill="#cfd3cd"/><rect x="12" y="78" width="90" height="5" fill="#cfd3cd"/>
+    </g>
+    <g transform="translate(960 150)">
+      <animateTransform attributeName="transform" type="translate" values="960 150;960 145;960 150" dur="4.9s" begin="-3s" repeatCount="indefinite"/>
+      <rect x="5" y="5" width="150" height="96" fill="#1d3b6e" opacity=".25"/>
+      <rect width="150" height="96" fill="#fff" stroke="#1b1f1c" stroke-width="3"/>
+      <rect x="12" y="13" width="8" height="8" fill="#2f86c9"/><text x="26" y="21" fill="#2f86c9">NEUROSCIENCE</text>
+      <rect x="12" y="36" width="126" height="5" fill="#cfd3cd"/><rect x="12" y="50" width="94" height="5" fill="#cfd3cd"/><rect x="12" y="64" width="118" height="5" fill="#cfd3cd"/><rect x="12" y="78" width="102" height="5" fill="#cfd3cd"/>
+    </g>
+  </g>
+
+  <!-- lawn -->
+  <rect y="400" width="1200" height="40" fill="url(#grass)"/>
+  <rect y="396" width="1200" height="4" fill="#86c45e"/>
+  <g fill="#ffd34d"><rect x="140" y="408" width="4" height="4"/><rect x="470" y="420" width="4" height="4"/><rect x="880" y="410" width="4" height="4"/><rect x="1090" y="424" width="4" height="4"/></g>
+  <g fill="#f08ab0"><rect x="300" y="416" width="4" height="4"/><rect x="690" y="426" width="4" height="4"/><rect x="1010" y="412" width="4" height="4"/></g>
+</svg>
